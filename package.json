@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n home,projects -c blue,green \"bun run --cwd web/home dev\" \"bun run --cwd web/projects dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

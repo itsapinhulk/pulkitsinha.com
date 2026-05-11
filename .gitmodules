@@ -1,0 +1,6 @@
+[submodule "ext/shellutils"]
+	path = ext/shellutils
+	url = https://github.com/itsapinhulk/shellutils
+[submodule "ext/visa-tracker"]
+	path = ext/visa-tracker
+	url = https://github.com/itsapinhulk/visa-tracker
