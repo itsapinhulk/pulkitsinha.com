@@ -26,7 +26,7 @@ export default function App() {
             Full content is being migrated here.
           </p>
           <ul>
-            <li><a href={import.meta.env.VITE_PROJECTS_URL}>{import.meta.env.VITE_PROJECTS_URL}</a></li>
+            <li><a href={import.meta.env.VITE_PROJECTS_URL}>Projects</a></li>
           </ul>
         </section>
       </main>
