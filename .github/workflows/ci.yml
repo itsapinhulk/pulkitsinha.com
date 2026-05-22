@@ -20,3 +20,6 @@ jobs:
 
       - name: Build
         run: ./scripts/build.sh
+        env:
+          HOME_BASE_URL: pulkitsinha.com
+          PROJECTS_BASE_URL: projects.pulkitsinha.com

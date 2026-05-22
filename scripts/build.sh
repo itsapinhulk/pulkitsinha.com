@@ -7,8 +7,8 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST="$REPO/dist"
 GIT_LAST_UPDATED="$REPO/ext/shellutils/bash/git-last-updated"
 
-HOME_BASE_URL="${HOME_BASE_URL:-pulkitsinha.com}"
-PROJECTS_BASE_URL="${PROJECTS_BASE_URL:-projects.${HOME_BASE_URL}}"
+: "${HOME_BASE_URL:?HOME_BASE_URL is required}"
+: "${PROJECTS_BASE_URL:?PROJECTS_BASE_URL is required}"
 
 export VITE_HOME_URL="https://${HOME_BASE_URL}"
 export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
@@ -56,14 +56,14 @@ build_vite() {
 
 build_site_home() {
     echo "==> ${HOME_BASE_URL}"
-    local out="$DIST/$HOME_BASE_URL"
+    local out="$DIST/home"
     build_vite "$REPO/web/home" "$out" "/"
     cp "$REPO/web/common/analytics.js" "$out/analytics.js"
 }
 
 build_site_projects() {
     echo "==> ${PROJECTS_BASE_URL}"
-    local out="$DIST/$PROJECTS_BASE_URL"
+    local out="$DIST/projects"
     build_vite "$REPO/web/projects" "$out" "/"
 
     # Subpath: /visa-tracker  (submodule)
@@ -77,16 +77,36 @@ build_site_projects() {
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
+# Usage: build.sh [clean|home|projects] ...  (default: all sites)
 
-echo "Building all sites (HOME=$HOME_BASE_URL  PROJECTS=$PROJECTS_BASE_URL)"
+if [[ "${1:-}" == "clean" ]]; then
+    echo "Cleaning $DIST..."
+    rm -rf "$DIST"/*/
+    exit 0
+fi
+
+if [[ $# -eq 0 ]]; then
+    SITES=(home projects)
+else
+    SITES=("$@")
+fi
+
+for site in "${SITES[@]}"; do
+    if ! declare -f "build_site_${site}" > /dev/null; then
+        echo "error: unknown site '${site}' (known: home, projects)" >&2
+        exit 1
+    fi
+done
+
+echo "Building: ${SITES[*]} (HOME=$HOME_BASE_URL  PROJECTS=$PROJECTS_BASE_URL)"
 echo "Output: $DIST"
 echo
 
-rm -rf "$DIST"
 mkdir -p "$DIST"
 
-build_site_home
-build_site_projects
+for site in "${SITES[@]}"; do
+    "build_site_${site}"
+done
 
 echo
 echo "Done. Output:"

@@ -35,7 +35,7 @@ Opens:
 ./scripts/build.sh
 ```
 
-Output goes to `dist/<domain>/`. Requires `HOME_BASE_URL` and `PROJECTS_BASE_URL` env vars (default to `pulkitsinha.com` and `projects.pulkitsinha.com`).
+Output goes to `dist/home/` and `dist/projects/`. Accepts optional args to build a single site: `./scripts/build.sh home`. Requires `HOME_BASE_URL` and `PROJECTS_BASE_URL` env vars (default to `pulkitsinha.com` and `projects.pulkitsinha.com`).
 
 ## Submodules
 
