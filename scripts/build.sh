@@ -43,6 +43,7 @@ build_vite() {
     mkdir -p "$out"
     (
         cd "$src"
+        bun install --frozen-lockfile
         VITE_BUILD_TIME="$ts" bun run build -- \
             --base="$base" \
             --outDir="$out" \
