@@ -69,12 +69,12 @@ build_site_projects() {
 
     # Subpath: /visa-tracker  (submodule)
     local vt_src="$REPO/ext/visa-tracker/src/web"
-    if [[ -f "$vt_src/package.json" ]]; then
-        echo "  subpath: /visa-tracker"
-        build_vite "$vt_src" "$out/visa-tracker" "/visa-tracker/"
-    else
-        echo "  [skip] visa-tracker submodule not initialised"
+    if [[ ! -f "$vt_src/package.json" ]]; then
+        echo "error: visa-tracker submodule not initialised (run: git submodule update --init)" >&2
+        exit 1
     fi
+    echo "  subpath: /visa-tracker"
+    build_vite "$vt_src" "$out/visa-tracker" "/visa-tracker/"
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ build_site_projects() {
 
 if [[ "${1:-}" == "clean" ]]; then
     echo "Cleaning $DIST..."
-    rm -rf "$DIST"/*/
+    rm -rf "${DIST:?}"/*/
     exit 0
 fi
 
