@@ -13,9 +13,6 @@ jobs:
           submodules: recursive
           fetch-depth: 1
 
-      - name: Check analytics inclusion
-        run: ./scripts/check-analytics.sh
-
       - uses: oven-sh/setup-bun@v2
 
       - name: Build
@@ -23,3 +20,6 @@ jobs:
         env:
           HOME_BASE_URL: pulkitsinha.com
           PROJECTS_BASE_URL: projects.pulkitsinha.com
+
+      - name: Check analytics inclusion
+        run: ./scripts/check-analytics.sh
