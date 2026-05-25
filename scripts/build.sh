@@ -59,7 +59,7 @@ build_site_home() {
     echo "==> ${HOME_BASE_URL}"
     local out="$DIST/home"
     build_vite "$REPO/web/home" "$out" "/"
-    cp "$REPO/web/common/analytics.js" "$out/analytics.js"
+    cp "$REPO/web/export/analytics.js" "$out/analytics.js"
 }
 
 build_site_projects() {
