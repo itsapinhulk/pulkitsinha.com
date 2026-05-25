@@ -17,9 +17,16 @@ while IFS= read -r -d '' html; do
     fi
 done < <(find "$DIST" -name "*.html" -print0)
 
+HTML_COUNT=$(find "$DIST" -name "*.html" | wc -l | tr -d ' ')
+
+if [[ $HTML_COUNT -eq 0 ]]; then
+    echo "analytics check: no HTML files found in $DIST" >&2
+    exit 1
+fi
+
 if [[ $FAIL -gt 0 ]]; then
     echo "analytics check: $FAIL file(s) missing analytics.js" >&2
     exit 1
 fi
 
-echo "analytics check: OK ($(find "$DIST" -name "*.html" | wc -l | tr -d ' ') HTML files)"
+echo "analytics check: OK ($HTML_COUNT HTML files)"
