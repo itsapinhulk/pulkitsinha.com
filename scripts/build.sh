@@ -15,7 +15,7 @@ export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
 export VITE_ANALYTICS_URL="${VITE_HOME_URL}/analytics.js"
 
 # Returns last-commit Unix timestamp (ms) for a repo-relative path.
-# Falls back to current time if shellutils not initialised or path has no history.
+# Fails with exit code 1 if shellutils not initialised or path has no history.
 last_updated_ms() {
     local path="$1"
     local ts=""
@@ -23,8 +23,9 @@ last_updated_ms() {
         ts=$("$GIT_LAST_UPDATED" -C "$REPO" "$path" 2>/dev/null) || ts=""
     fi
     if [[ -z "$ts" ]]; then
-        echo "  [warn] git-last-updated unavailable for $path, using current time" >&2
-        ts=$(date +%s)
+        echo "error: git-last-updated unavailable or no history for $path" >&2
+        echo -1
+        return 1
     fi
     echo $((ts * 1000))
 }
