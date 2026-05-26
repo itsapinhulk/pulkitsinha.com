@@ -21,7 +21,7 @@ export default function App() {
 
       <main>
         <ul>
-          <li><a href="/visa-tracker/">US Green Card Tracker</a></li>
+          <li><a href="/us-green-card-wait-time/">US Green Card Tracker</a></li>
         </ul>
       </main>
 

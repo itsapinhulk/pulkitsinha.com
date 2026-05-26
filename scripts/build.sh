@@ -67,14 +67,14 @@ build_site_projects() {
     local out="$DIST/projects"
     build_vite "$REPO/web/projects" "$out" "/"
 
-    # Subpath: /visa-tracker  (submodule)
+    # Subpath: /us-green-card-wait-time  (submodule)
     local vt_src="$REPO/ext/visa-tracker/src/web"
     if [[ ! -f "$vt_src/package.json" ]]; then
         echo "error: visa-tracker submodule not initialised (run: git submodule update --init)" >&2
         exit 1
     fi
-    echo "  subpath: /visa-tracker"
-    build_vite "$vt_src" "$out/visa-tracker" "/visa-tracker/"
+    echo "  subpath: /us-green-card-wait-time"
+    build_vite "$vt_src" "$out/us-green-card-wait-time" "/us-green-card-wait-time/"
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────

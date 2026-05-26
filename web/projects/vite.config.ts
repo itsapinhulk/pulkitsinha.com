@@ -11,7 +11,7 @@ process.env.VITE_ANALYTICS_URL ??= 'http://localhost:6001/analytics.js'
 // Each entry is proxied at /path on this dev server and started alongside it.
 // To add a new subproject: append an entry here. src is relative to this file.
 export const SUBPROJECTS = [
-  { path: '/visa-tracker', port: 6010, src: '../../ext/visa-tracker/src/web', devScript: 'start' },
+  { path: '/us-green-card-wait-time', port: 6010, src: '../../ext/visa-tracker/src/web', devScript: 'start' },
 ]
 
 export default defineConfig({

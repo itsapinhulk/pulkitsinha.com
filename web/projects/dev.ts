@@ -18,7 +18,7 @@ const commands = [
   ...SUBPROJECTS.map(({ path, port, src, devScript = 'dev' }) => ({
     name: path.slice(1),
     color: 'cyan',
-    cmd: `bun run --cwd ${resolve(HERE, src)} ${devScript} -- --port ${port} --host`,
+    cmd: `bun run --cwd ${resolve(HERE, src)} ${devScript} -- --port ${port} --host --base ${path}/`,
   })),
 ]
 
