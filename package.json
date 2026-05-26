@@ -1,9 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "dev": "concurrently -n home,projects -c blue,green \"bun run --cwd web/home dev\" \"bun run --cwd web/projects dev\""
+    "dev": "concurrently -n home,projects -c blue,green \"bun run --cwd web/home dev\" \"bun run --cwd web/projects dev\"",
+    "preview": "concurrently -n home,projects -c blue,green \"serve dist/home -p 7001\" \"serve dist/projects -p 7002\""
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "serve": "^14.2.6"
   }
 }

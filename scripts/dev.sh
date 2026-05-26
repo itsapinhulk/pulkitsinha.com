@@ -6,9 +6,9 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo "Installing dependencies..."
-bun install --cwd "$REPO" &
-bun install --cwd "$REPO/web/home" &
-bun install --cwd "$REPO/web/projects" &
+bun install --frozen-lockfile --cwd "$REPO" &
+bun install --frozen-lockfile --cwd "$REPO/web/home" &
+bun install --frozen-lockfile --cwd "$REPO/web/projects" &
 wait
 
 exec bun run --cwd "$REPO" dev
