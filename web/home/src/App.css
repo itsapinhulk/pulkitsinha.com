@@ -1,43 +1,4 @@
-/* Fonts and Icons */
-@import "@fortawesome/fontawesome-free/css/all.min.css";
-@import "@fontsource/cormorant-garamond/300.css";
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/600.css";
-@import "@fontsource/cormorant-garamond/700.css";
-@import "@fontsource/work-sans/300.css";
-@import "@fontsource/work-sans/400.css";
-@import "@fontsource/work-sans/500.css";
-@import "@fontsource/work-sans/600.css";
-
-:root {
-    --primary-blue: #4a90e2;
-    --primary-blue-rgb: 74, 144, 226;
-    --secondary-blue: #357abd;
-    --accent: #5b9bd5;
-    --accent-light: #6eb5ff;
-    --text-primary: #e8e8e8;
-    --text-secondary: #a8a8a8;
-    --background: #0a0e27;
-    --body-bg: #0d1117;
-    --card-bg: #1a1f3a;
-    --fog-color: rgba(var(--primary-blue-rgb), 0.08);
-    --border-color: rgba(var(--primary-blue-rgb), 0.3);
-}
-
-:root.light-mode {
-    --primary-blue: #357abd;
-    --primary-blue-rgb: 53, 122, 189;
-    --secondary-blue: #2a6198;
-    --accent: #4a90e2;
-    --accent-light: #357abd;
-    --text-primary: #1a1f3a;
-    --text-secondary: #4a4a4a;
-    --background: #f4f7f9;
-    --body-bg: #ffffff;
-    --card-bg: #f0f4f8;
-    --fog-color: rgba(var(--primary-blue-rgb), 0.04);
-    --border-color: rgba(var(--primary-blue-rgb), 0.15);
-}
+@import "../../common/theme.css";
 
 * {
     margin: 0;

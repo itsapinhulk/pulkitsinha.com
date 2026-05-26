@@ -7,3 +7,7 @@ interface ImportMetaEnv {
 }
 
 declare const __BUILD_TIME__: string
+
+interface Window {
+  __theme: { isLight(): boolean; toggle(): boolean }
+}

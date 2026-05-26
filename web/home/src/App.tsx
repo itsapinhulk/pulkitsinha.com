@@ -1,4 +1,13 @@
 import { useState } from 'react'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import '@fontsource/cormorant-garamond/300.css'
+import '@fontsource/cormorant-garamond/400.css'
+import '@fontsource/cormorant-garamond/600.css'
+import '@fontsource/cormorant-garamond/700.css'
+import '@fontsource/work-sans/300.css'
+import '@fontsource/work-sans/400.css'
+import '@fontsource/work-sans/500.css'
+import '@fontsource/work-sans/600.css'
 import './App.css'
 
 function formatBuildTime(ms: string): string {
@@ -13,18 +22,8 @@ function formatBuildTime(ms: string): string {
 }
 
 export default function App() {
-  const [isLight, setIsLight] = useState(
-    () => document.documentElement.classList.contains('light-mode')
-  )
-
-  const toggleTheme = () => {
-    const next = !isLight
-    document.documentElement.classList.toggle('light-mode', next)
-    localStorage.setItem('theme', next ? 'light' : 'dark')
-    setIsLight(next)
-  }
-
-  const greenCardUrl = `${import.meta.env.VITE_PROJECTS_URL}/us-green-card-wait-time/`
+  const [isLight, setIsLight] = useState(() => window.__theme.isLight())
+  const toggleTheme = () => setIsLight(window.__theme.toggle())
 
   return (
     <div className="container">
@@ -87,51 +86,18 @@ export default function App() {
         </div>
       </section>
 
-      <section id="projects">
+      <section id="projects-link">
         <h2>Projects</h2>
-        <div className="project-grid">
-          <div className="project-card">
-            <h3>
-              <a href={greenCardUrl} target="_blank">US Green Card Tracker</a>
-            </h3>
-            <p>
-              An auto-updating website showing historical and current priority dates for all
-              categories of US Green Card applications.
-            </p>
-            <div className="project-tags">
-              <span className="tag">React</span>
-              <span className="tag">Python</span>
-            </div>
+        <a
+          href={import.meta.env.VITE_PROJECTS_URL}
+          target="_blank"
+          className="experience-item"
+          style={{ display: 'block', textDecoration: 'none' }}
+        >
+          <div className="experience-info">
+            <h3>See my personal projects →</h3>
           </div>
-
-          <div className="project-card">
-            <h3>
-              <a href="https://github.com/itsapinhulk/dotfiles" target="_blank">dotfiles</a>
-              {' / '}
-              <a href="https://github.com/itsapinhulk/shellutils" target="_blank">shellutils</a>
-            </h3>
-            <p>
-              A collection of useful utility functions and configuration settings for tools in
-              my day-to-day work.
-            </p>
-            <div className="project-tags">
-              <span className="tag">Shell</span>
-              <span className="tag">Python</span>
-              <span className="tag">Config</span>
-            </div>
-          </div>
-
-          <div className="project-group">
-            <div className="project-card gist-card">
-              <h3>
-                <a href="https://gist.github.com/itsapinhulk" target="_blank">
-                  Useful code snippets
-                </a>
-              </h3>
-            </div>
-            <div className="coming-soon">More to come ...</div>
-          </div>
-        </div>
+        </a>
       </section>
 
       <section id="experience">

@@ -1,0 +1,25 @@
+:root {
+  --primary-blue: #4a90e2;
+  --primary-blue-rgb: 74, 144, 226;
+  --accent: #5b9bd5;
+  --accent-light: #6eb5ff;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a8a8a8;
+  --body-bg: #0d1117;
+  --card-bg: #1a1f3a;
+  --fog-color: rgba(var(--primary-blue-rgb), 0.08);
+  --border-color: rgba(var(--primary-blue-rgb), 0.3);
+}
+
+:root.light-mode {
+  --primary-blue: #357abd;
+  --primary-blue-rgb: 53, 122, 189;
+  --accent: #4a90e2;
+  --accent-light: #357abd;
+  --text-primary: #1a1f3a;
+  --text-secondary: #4a4a4a;
+  --body-bg: #ffffff;
+  --card-bg: #f0f4f8;
+  --fog-color: rgba(var(--primary-blue-rgb), 0.04);
+  --border-color: rgba(var(--primary-blue-rgb), 0.15);
+}
