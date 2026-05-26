@@ -7,8 +7,8 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST="$REPO/dist"
 GIT_LAST_UPDATED="$REPO/ext/shellutils/bash/git-last-updated"
 
-: "${HOME_BASE_URL:?HOME_BASE_URL is required}"
-: "${PROJECTS_BASE_URL:?PROJECTS_BASE_URL is required}"
+HOME_BASE_URL="${HOME_BASE_URL:-pulkitsinha.com}"
+PROJECTS_BASE_URL="${PROJECTS_BASE_URL:-projects.pulkitsinha.com}"
 
 export VITE_HOME_URL="https://${HOME_BASE_URL}"
 export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
