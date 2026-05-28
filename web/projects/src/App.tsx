@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="container">
       <header>
-        <a href={import.meta.env.VITE_HOME_URL} className="back">← pulkitsinha.com</a>
+        <a href={import.meta.env.VITE_HOME_URL} className="back">← Back to Home Page</a>
         <h1>Projects</h1>
       </header>
 

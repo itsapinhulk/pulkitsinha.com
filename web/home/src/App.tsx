@@ -42,7 +42,7 @@ export default function App() {
         </div>
         <div className="header-content">
           <h1>Pulkit Sinha</h1>
-          <p className="subtitle">Software Engineer</p>
+          <p className="subtitle">Software Engineer / Part-Time AI Babysitter</p>
           <div className="social-links">
             <a href="https://github.com/itsapinhulk" target="_blank" title="GitHub">
               <i className="fab fa-github"></i>
@@ -90,7 +90,6 @@ export default function App() {
         <h2>Projects</h2>
         <a
           href={import.meta.env.VITE_PROJECTS_URL}
-          target="_blank"
           className="experience-item"
           style={{ display: 'block', textDecoration: 'none' }}
         >
@@ -181,7 +180,7 @@ export default function App() {
             <ul>
               <li>
                 Tech Lead for the{' '}
-                <a href="https://platform.worldquantbrain.com/" target="_blank">WebSim</a> project.
+                <a href="https://platform.worldquantbrain.com/" target="_blank">WebSim / WQBrain</a> project.
               </li>
               <li>
                 Created an expression-based language for authoring trading models, including modern
@@ -267,7 +266,7 @@ export default function App() {
           <div className="skill-category">
             <h3>Tools & Technologies</h3>
             <div className="skill-list">
-              {['Git', 'jj VCS', 'Bash', 'tmux', 'Docker', 'k8s', 'MySQL', 'PostgreSQL', 'AWS',
+              {['Git', 'Jujutsu / jj VCS', 'Bash', 'tmux', 'Docker', 'k8s', 'MySQL', 'PostgreSQL', 'AWS',
                 'NoSQL', 'CMake', 'Conda', 'Nixpkgs', 'Nginx', 'Redis', 'Prometheus', 'Grafana',
                 'NeoVIM', 'JetBrains', 'Zed'].map(s => (
                 <span key={s} className="skill-item">{s}</span>
