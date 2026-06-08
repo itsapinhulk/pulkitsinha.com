@@ -3,6 +3,7 @@
 interface ImportMetaEnv {
   readonly VITE_HOME_URL: string
   readonly VITE_PROJECTS_URL: string
+  readonly VITE_IMAGES_URL: string
   readonly VITE_ANALYTICS_URL: string
 }
 

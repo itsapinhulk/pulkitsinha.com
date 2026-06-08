@@ -12,6 +12,7 @@ const themeScript = readFileSync(
 
 process.env.VITE_HOME_URL ??= `http://localhost:${PORT}`
 process.env.VITE_PROJECTS_URL ??= 'http://localhost:6002'
+process.env.VITE_IMAGES_URL ??= 'http://localhost:6003'
 process.env.VITE_ANALYTICS_URL ??= `http://localhost:${PORT}/analytics.js`
 
 export default defineConfig({

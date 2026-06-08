@@ -35,7 +35,7 @@ export default function App() {
         </div>
         <div className="header-photo">
           <img
-            src="https://www.gravatar.com/avatar/005638b36f6a30900c959ef6091c33337fbcc63f735aa76c86b27fdade7bf510?s=200"
+            src={`${import.meta.env.VITE_IMAGES_URL}/profile/photo_1.jpg`}
             alt="Pulkit Sinha"
             className="profile-photo"
           />

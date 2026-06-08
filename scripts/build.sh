@@ -13,6 +13,7 @@ IMAGES_BASE_URL="${IMAGES_BASE_URL:-images.pulkitsinha.com}"
 
 export VITE_HOME_URL="https://${HOME_BASE_URL}"
 export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
+export VITE_IMAGES_URL="https://${IMAGES_BASE_URL}"
 export VITE_ANALYTICS_URL="${VITE_HOME_URL}/analytics.js"
 
 # Returns last-commit Unix timestamp (ms) for a repo-relative path.
