@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "concurrently -n home,projects -c blue,green \"bun run --cwd web/home dev\" \"bun run --cwd web/projects dev\"",
-    "preview": "concurrently -n home,projects -c blue,green \"serve dist/home -p 7001\" \"serve dist/projects -p 7002\""
+    "dev": "concurrently -n home,projects,images -c blue,green,magenta \"bun run --cwd web/home dev\" \"bun run --cwd web/projects dev\" \"serve web/images -p 6003\"",
+    "preview": "concurrently -n home,projects,images -c blue,green,magenta \"serve dist/home -p 7001\" \"serve dist/projects -p 7002\" \"serve dist/images -p 7003\""
   },
   "devDependencies": {
     "concurrently": "^9.2.1",

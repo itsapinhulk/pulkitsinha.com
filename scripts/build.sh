@@ -9,6 +9,7 @@ GIT_LAST_UPDATED="$REPO/ext/shellutils/bash/git-last-updated"
 
 HOME_BASE_URL="${HOME_BASE_URL:-pulkitsinha.com}"
 PROJECTS_BASE_URL="${PROJECTS_BASE_URL:-projects.pulkitsinha.com}"
+IMAGES_BASE_URL="${IMAGES_BASE_URL:-images.pulkitsinha.com}"
 
 export VITE_HOME_URL="https://${HOME_BASE_URL}"
 export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
@@ -62,6 +63,13 @@ build_site_home() {
     cp "$REPO/web/export/analytics.js" "$out/analytics.js"
 }
 
+build_site_images() {
+    echo "==> ${IMAGES_BASE_URL}"
+    local out="$DIST/images"
+    mkdir -p "$out"
+    cp -r "$REPO/web/images/." "$out/"
+}
+
 build_site_projects() {
     echo "==> ${PROJECTS_BASE_URL}"
     local out="$DIST/projects"
@@ -87,19 +95,19 @@ if [[ "${1:-}" == "clean" ]]; then
 fi
 
 if [[ $# -eq 0 ]]; then
-    SITES=(home projects)
+    SITES=(home projects images)
 else
     SITES=("$@")
 fi
 
 for site in "${SITES[@]}"; do
     if ! declare -f "build_site_${site}" > /dev/null; then
-        echo "error: unknown site '${site}' (known: home, projects)" >&2
+        echo "error: unknown site '${site}' (known: home, projects, images)" >&2
         exit 1
     fi
 done
 
-echo "Building: ${SITES[*]} (HOME=$HOME_BASE_URL  PROJECTS=$PROJECTS_BASE_URL)"
+echo "Building: ${SITES[*]} (HOME=$HOME_BASE_URL  PROJECTS=$PROJECTS_BASE_URL  IMAGES=$IMAGES_BASE_URL)"
 echo "Output: $DIST"
 echo
 
