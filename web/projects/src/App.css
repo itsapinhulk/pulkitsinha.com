@@ -59,6 +59,38 @@ main { flex: 1; }
 
 .project-card:hover::before { transform: scaleX(1); }
 
+a.project-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card--clickable h3 .nowrap { white-space: nowrap; }
+
+.project-card h3 a::after,
+.project-card--clickable h3 .nowrap::after {
+  content: '';
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.3em;
+  vertical-align: middle;
+  background-color: currentColor;
+  -webkit-mask-image: var(--new-tab-icon);
+  mask-image: var(--new-tab-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.project-card h3 a:hover::after,
+.project-card--clickable h3:hover .nowrap::after {
+  opacity: 1;
+}
+
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(var(--primary-blue-rgb), 0.2);

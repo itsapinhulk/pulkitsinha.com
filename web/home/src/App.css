@@ -494,6 +494,37 @@ footer a {
     transition: opacity 0.3s ease;
 }
 
+/* New-tab icon on hover — company names and university headings */
+.experience-info a,
+.education-info a {
+  text-decoration: none;
+}
+
+.experience-info a .company::after,
+.education-info a h3::after {
+  content: '';
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  margin-left: 0.25em;
+  vertical-align: middle;
+  background-color: currentColor;
+  -webkit-mask-image: var(--new-tab-icon);
+  mask-image: var(--new-tab-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.experience-info a:hover .company::after,
+.education-info a:hover h3::after {
+  opacity: 1;
+}
+
+
 /* Mobile and Tablet only */
 @media (max-width: 768px) {
     .container {

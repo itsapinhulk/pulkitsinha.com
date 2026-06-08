@@ -21,10 +21,8 @@ export default function App() {
 
       <main>
         <div className="project-grid">
-          <div className="project-card">
-            <h3>
-              <a href="/us-green-card-wait-time/" target="_blank">US Green Card Tracker</a>
-            </h3>
+          <a href="/us-green-card-wait-time/" target="_blank" className="project-card project-card--clickable">
+            <h3>US Green Card <span className="nowrap">Tracker</span></h3>
             <p>
               An auto-updating website showing historical and current priority dates for all
               categories of US Green Card applications.
@@ -33,7 +31,7 @@ export default function App() {
               <span className="tag">React</span>
               <span className="tag">Python</span>
             </div>
-          </div>
+          </a>
 
           <div className="project-card">
             <h3>

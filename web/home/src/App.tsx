@@ -131,7 +131,9 @@ export default function App() {
         <div className="experience-item">
           <div className="experience-header">
             <div className="experience-info">
-              <p className="company">Google</p>
+              <a href="https://www.google.com" target="_blank">
+                <p className="company">Google</p>
+              </a>
               <h3>Senior Software Engineer</h3>
               <span className="duration">2021 - Dec 2024</span>
             </div>
