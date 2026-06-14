@@ -19,7 +19,11 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 1
+          lfs: true
 
-      - uses: itsapinhulk/git-submodules-upgrade@v2
+      - name: git status check
+        run: git status
+        
+      - uses: itsapinhulk/git-submodules-upgrade@v3
         with:
           reviewer: itsapinhulk
