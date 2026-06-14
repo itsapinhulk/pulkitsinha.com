@@ -19,7 +19,8 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 1
+          lfs: true
 
-      - uses: itsapinhulk/git-submodules-upgrade@v2
+      - uses: itsapinhulk/git-submodules-upgrade@v3
         with:
           reviewer: itsapinhulk
