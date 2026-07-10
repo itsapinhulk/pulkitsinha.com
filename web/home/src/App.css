@@ -620,6 +620,14 @@ footer a {
     .subtitle {
         font-size: 0.9rem;
     }
+
+    /* Break the icons evenly (3 x 2) instead of an uneven wrap */
+    .social-links {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        justify-content: center;
+        gap: 1.25rem;
+    }
 }
 
 /* Print styles */
