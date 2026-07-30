@@ -16,31 +16,40 @@ export VITE_PROJECTS_URL="https://${PROJECTS_BASE_URL}"
 export VITE_IMAGES_URL="https://${IMAGES_BASE_URL}"
 export VITE_ANALYTICS_URL="${VITE_HOME_URL}/analytics.js"
 
-# Returns last-commit Unix timestamp (ms) for a repo-relative path.
-# Fails with exit code 1 if shellutils not initialised or path has no history.
+# Returns the newest last-commit Unix timestamp (ms) across one or more
+# repo-relative paths.
+# Fails with exit code 1 if shellutils not initialised or a path has no history.
 last_updated_ms() {
-    local path="$1"
-    local ts=""
-    if [[ -x "$GIT_LAST_UPDATED" ]]; then
-        ts=$("$GIT_LAST_UPDATED" -C "$REPO" "$path" 2>/dev/null) || ts=""
-    fi
-    if [[ -z "$ts" ]]; then
-        echo "error: git-last-updated unavailable or no history for $path" >&2
-        echo -1
-        return 1
-    fi
-    echo $((ts * 1000))
+    local path ts newest=""
+    for path in "$@"; do
+        ts=""
+        if [[ -x "$GIT_LAST_UPDATED" ]]; then
+            ts=$("$GIT_LAST_UPDATED" -C "$REPO" "$path" 2>/dev/null) || ts=""
+        fi
+        if [[ -z "$ts" ]]; then
+            echo "error: git-last-updated unavailable or no history for $path" >&2
+            echo -1
+            return 1
+        fi
+        if [[ -z "$newest" || "$ts" -gt "$newest" ]]; then
+            newest="$ts"
+        fi
+    done
+    echo $((newest * 1000))
 }
 
 # Build a Vite app, output to a given directory.
-# Usage: build_vite <source-dir> <out-dir> [base-path]
+# Usage: build_vite <source-dir> <out-dir> [base-path] [extra-input-path...]
+# Extra input paths are repo-relative paths outside <source-dir> that are also
+# baked into the bundle; they count towards the build timestamp.
 build_vite() {
     local src="$1"
     local out="$2"
     local base="${3:-/}"
     local rel="${src#$REPO/}"
+    local inputs=("$rel" "${@:4}")
     local ts
-    ts=$(last_updated_ms "$rel")
+    ts=$(last_updated_ms "${inputs[@]}")
 
     echo "  vite: $rel  (base=$base)"
     mkdir -p "$out"
@@ -83,7 +92,10 @@ build_site_projects() {
         exit 1
     fi
     echo "  subpath: /us-green-card-wait-time"
-    build_vite "$vt_src" "$out/us-green-card-wait-time" "/us-green-card-wait-time/"
+    # The CSVs under ext/visa-tracker/data are inlined into the bundle at build
+    # time (see all_data.tsx), so data-only updates must bump the build time.
+    build_vite "$vt_src" "$out/us-green-card-wait-time" "/us-green-card-wait-time/" \
+        "ext/visa-tracker/data"
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
